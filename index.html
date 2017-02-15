@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Steven Style Sheet -->
+		<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+		<title>Hangman Game</title>
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="text-right">
+	<header class="row">
+		<img id="headerimageleft" src="http://i.giphy.com/3rKFa3sCvKBL7aDlN6.gif">
+		<h1>Basketball Hangman</h1>
+		<img id="headerimageright" src="http://i.giphy.com/3rKFa3sCvKBL7aDlN6.gif">	
+	</header>		
+	<div class="container" id="main-div">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-3">
+				<section class="winningboxleft">
+					<img class="thumbnail" id="winningboximage" src="../../../Downloads/hD7C04s.gif">
+				</section>
+			</div>
+			<div class="col-md-3">
+				<section class="winningboxright" id="hangmanbox">
+					<h2>Press Any Key to Get Started!</h2>
+				</section>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+		var winsDiv = $("<div>");
+		winsDiv.attr("id","wins-box");
+		var wordDiv = $("<div>");
+		wordDiv.attr("id","word-box");
+		var guessesDiv = $("<div>");
+		guessesDiv.attr("id","guesses-box");
+		var lettersDiv = $("<div>");
+		lettersDiv.attr("id","letters-box");
+		var winsCountDiv = $("<div>");
+		winsCountDiv.attr("id","wins-count-box");
+		var wordSpaceDiv = $("<div>");
+		wordSpaceDiv.attr("id","word-guess-box");
+		var guessesCountDiv = $("<div>");
+		guessesCountDiv.attr("id","guesses-count-box");
+		var lettersVisibleDiv = $("<div>");
+		lettersVisibleDiv.attr("id","letters-visible-box");
+		
+		$(document).one("keyup",function(){
+		console.log("Hello");
+		$("#hangmanbox").html("");
+		$("#hangmanbox").append(winsDiv);
+		$("#hangmanbox").append(wordDiv);
+		$("#hangmanbox").append(guessesDiv);
+		$("#hangmanbox").append(lettersDiv);
+		$("#wins-box").html("<h4>Wins</h4>");
+		$("#wins-box").append(winsCountDiv);
+		$("#wins-count-box").html("<h4>0</h4>");
+		$("#word-box").html("<h4>Current Word</h4>");
+		$("#word-box").append(wordSpaceDiv);
+		$("#word-guess-box").html("<h4>_ _ _ _ _ _ _</h4>");
+		$("#guesses-box").html("<h4>Number of Guesses Remaining</h4>");
+		$("#guesses-box").append(guessesCountDiv);
+		$("#guesses-count-box").html("<h4>10</h4>");
+		$("#letters-box").html("<h4>Letters Already Guesses</h4>");
+		$("#letters-box").append(lettersVisibleDiv);
+		});
+		
+		var basketballwords = ["basketball","foul","James","Joran","Bryant"];
+		for(var a = 0; a < 2; a++){
+		var hangmanword = basketballwords[a];
+		for(var b = 0;b < 2;b++){
+		var letterDiv = $("<div>");
+		letterDiv.attr("id","letter-box-" + b);
+		$("#word-guess-box").append(letterDiv);
+		$("#letter-box-" + b).html("_");
+		}
+		$(document).keypress(function() {
+		var userKey = event.key.toLowerCase();
+		});
+		}
+		});
+	</script>
+	</div>
+</body>
+
+</html>
