@@ -14,15 +14,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	document.addEventListener("keypress", function(event) {
 		var userGenLetter = event.key.toLowerCase();
 		compGenLetterRevealed.innerHTML = "";
-		if(userGenLetter === compGenLetter){
-			winsCountNumber++;
-			winsCount.innerHTML = winsCountNumber;
-			guessesLeftCount.innerHTML = 10;
-			guessesLeftCountNumber = 10;
-			lettersGuessed.innerHTML = "";
-			lettersGuessedArray = [];
-			compGenLetter = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
-			}
 		if(userGenLetter !== compGenLetter){
 			guessesLeftCountNumber = guessesLeftCountNumber - 1;
 			guessesLeftCount.innerHTML = guessesLeftCountNumber;
@@ -39,5 +30,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				compGenLetter = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
 				}
 			}
+			if(userGenLetter === compGenLetter){
+			compGenLetter = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+			winsCountNumber++;
+			winsCount.innerHTML = winsCountNumber;
+			guessesLeftCount.innerHTML = 10;
+			guessesLeftCountNumber = 10;
+			lettersGuessed.innerHTML = "";
+			lettersGuessedArray = [];
+		}
 	});
 });
